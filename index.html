@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>JK Majors</title>
+    <title>TU Fox</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap 4 References -->
@@ -13,187 +13,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Your custom CSS -->
     <link rel="stylesheet" href="css/app.css">
-    <!-- QR code stuff -->
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-
 
     <!-- Your custom JavaScript -->
     <script src="js/app.js"></script>
 
     <!-- Link to image for the favicon -->
-    <link rel="icon" href="images/check_small.png">
+    <link rel="icon" href="images/TU100x100.png">
 </head>
 
 <body>
-
-<!-- Top Navigation Bar -->
-
-<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-    <!-- Logo -->
-      <a class ="navbar-brand" href="index.html">
-          <img alt="Check Mark" src="images/check_small.png" style="width:40px;">
-          &nbsp;&nbsp;SupeAble
-      </a>
-
-    <!-- Toggler Icon for responsiveness -->
-    <button id="toggle-icon" class="navbar-toggler secured" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon">Toggle</span>
-    </button>
-
-
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <!--Menu sets on the left -->
-        <ul class="navbar-nav mr-auto">
-        </ul>
-    <!--Menu sets on the right -->
-    <!--Each individual item can be secured by adding the class: secured -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item secured">
-            <!--    <a id="link-scan" class="nav-link" href="#"><i class="fa fa-link"></i> Scan </a>
-            </li>-->
-            <!--<li class="nav-item secured">
-                <a id="link-confirm" class="nav-link" href="#"><i class="fa fa-link"></i> Confirm </a>
-            </li>-->
-            <li class="nav-item secured">
-                <a id="link-history" class="nav-link" href="#"><i class="fa fa-link"></i> History </a>
-            </li>
-            <li class="nav-item secured">
-                <a id="link-logout" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
-            </li>
-        </ul>    
-    </div>
-</nav>
-
-<br><br><br><br>
-
-<!--Start container for BS4 (Bootstrap 4) formatting-->
-<div class="container-fluid">
-
-    <div class="row text-center">
-        <div class="col-md-12">
-			&nbsp; <!-- place holder for additional top row content -->
-        </div>
-    </div>
-
-    <div class="row">
-    <div class="col-md-2"></div>
-
-		<div class="col-md-8 content-wrapper " id="div-login" style="display: none;">
-            <form id='form-login'>
-				<label for="username">User name:</label>
-				<input type="text" name="username" id="username" class="form-control" >
-				<label for="password">Password:</label>
-                <input type="password" name="password" id="password" class="form-control" >
-                <br>
-				<div class="text-center">
-				    <input type="button" value="Login" id="btnLogin" class="btn btn-primary" style="font-size:2em;width:100%;" >
-                    <br>
-                    <br>
-                    <input type="button" value="Sign Up" id="btnSignup" class="btn btn-secondary" style="font-size:2em;width:100%;">                    
-                </div>      
-                    <br>
-                    <div id='login_message' class="">
-                </div>
-			</form>
-		</div>
-
-		<div class="col-md-8 content-wrapper " id="div-signup" style="display: none;">
-			<h1>Sign Up</h1>
-            <form id="form-signup">
-                <label for="newusername">New User Name:</label>
-				<input type="text" name="username" id="newusername" class="form-control" >
-				<label for="newpassword">New Password:</label>
-                <input type="password" name="password" id="newpassword" class="form-control" >
-                <label for="newpassword2">Retype New Password:</label>
-                <input type="password" id="newpassword2" class="form-control" >
-                <label for="email">Email:</label>
-                <input type="text" name="email" id="email" class="form-control" >
-                <br>
-                <div class="text-center">
-                    <input type="button" value="Make Account" id="btnMakeAccount" class="btn btn-primary" style="font-size:2em;width:100%;" >
-                    <br>
-                    <br>
-                    <input type="button" value="Cancel" id="btnCancel" class="btn btn-secondary" style="font-size:2em;width:100%;">
-                </div>
-                    <br>
-                <div id='signup_message' class="">
-                </div>
-            </form>
-		</div>
-
-		<div class="col-md-8 content-wrapper " id="div-scan" style="display: none;">
-			<h1>Scan the QR Code</h1>
-            <!-- scan API placeholder-->
-            <form id = "form-scan">
-                <input type="hidden" name="eventcode" id="eventcode" value="12345678-1234-1234-1234-000000000003" size="50">
-                <input type="hidden" name="userid" id="userid">
-            </form>
-            <br>
-            <!--
-            <div class="text-center">
-                <input type="button" value="Placeholder for Scan API" id="btnPlaceholder" class="btn-danger" style="font-size:2em;width:100%;">
-            </div>-->
-            <br><br>
-            <div style="margin-left:auto;margin-right:auto;width:400px;height:450px;max-width:100%" id="reader"></div>
-            <br><br>
-            <div class="text-center">
-				<input type="button" value="Sign Out" id="btnSignout" class="btn btn-secondary" style="font-size:2em;width:100%;" >
-            <br><br>
-            <div id="scan_message"></div>
-            </div>        
-		</div>
-		
-		<div class="col-md-8 content-wrapper " id="div-confirm" style="display: none;">
-			<h1>Confirmation</h1>
-            <div class="text-center">
-                <img alt="confirmationcheck" src="images/check_medium.png" style="max-width:80%">
-            </div>
-            <br>
-            <input type="button" value="Done" id="btnDone" class="btn btn-primary" style="font-size:2em;width:100%;"> 
-		</div>
-        <div class="col-md-8 content-wrapper " id="div-history" style="display: none;">
-			<div>
-                <h1>History</h1>
-                <table id="table-history" class="table table-bordered">
-            
-                </table>
-                <div id="history_message"></div>
-                <br><br>
-                
-                <div class="text-center">
-                <input type="button" value="Back to Scan" id="btnScanBack" class="btn btn-primary" style="font-size:2em;width:100%;" >
-                <br><br>
-                    <input type="button" value="Done" id="btnDoneNow" class="btn btn-secondary" style="font-size:2em;width:100%;" >
-                </div>
-            </div>
-
-		</div>
-
-    <div class="col-md-2"></div>
-    </div>
-
-<div class="row">
-    <div class="col-md-12 text-center">
-        <div>
-            &nbsp;
-        </div>
-    </div>
-</div>
-
-</div> <!-- container //-->
-
-<br>
-    <div class="container-fluid bg-dark text-white">
-        <div class="row">
-            <div class="col-md-12 text-center">
-            &copy; 2023 MIS3502 - SupeAble Mobile Client (Spring 2023)
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-				&nbsp; <!-- place holder for additional footer content -->
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+    <body>
+        <header>
+          <h1>Welcome to My Website</h1>
+        </header>
+        <section id="home">
+          <h2>Home Section</h2>
+          <p>This is the home section of my website.</p>
+        </section>
+        <section id="about">
+          <h2>About Section</h2>
+          <p>This is the about section of my website.</p>
+        </section>
+        <section id="contact">
+          <h2>Contact Section</h2>
+          <p>This is the contact section of my website.</p>
+        </section>
+        <footer>
+          <p>2023 JK Project</p>
+        </footer>
+      </body>
+      </html>
+      
+      
+      
+      
+          
