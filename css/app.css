@@ -9,3 +9,16 @@ footer {
     padding: 10px;
     color: #fff;
 }   
+
+.btn-rounded {
+    background-color: #32a7be;
+    border: none;
+    color: white;
+    /* padding: 20px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+  }
