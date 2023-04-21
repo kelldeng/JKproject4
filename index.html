@@ -24,7 +24,23 @@
 <body>
     
         <header>
-          <h1>Find Your Major</h1>
+          <div id="container-2col" class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <h1>Find Your Major</h1>
+              </div>
+              <div class="col-md-6">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item secured">
+                      <a id="link-history" class="nav-link" href="#"><i class="fa fa-history"></i> History </a>
+                  </li>
+                  <li class="nav-item secured">
+                      <a id="link-logout" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+                  </li>
+              </ul>  
+              </div>
+            </div>
+          </div>
         </header>
 
         <section id="home">
@@ -66,11 +82,13 @@
               
               <div class="col-md-8 content-wrapper " id="div-signup" style="display: none;">
                 <form id='form-signup'>
+                  <!-- need to make sure that the "name" field is same as the parameter names required in the lambda function -->
+                  <!-- ex: name = lname ->  -->
                     <!-- <label for="newfirstname"> First name:</label> -->
-                    <input type="text" name="firstname" id="newfirstname" class="form-control" placeholder="First name*">
+                    <input type="text" name="fname" id="newfirstname" class="form-control" placeholder="First name*">
                     <br>
                     <!-- <label for="newlastname"> Last name:</label> -->
-                    <input type="text" name="lastname" id="newlastname" class="form-control" placeholder="Last name*">
+                    <input type="text" name="lname" id="newlastname" class="form-control" placeholder="Last name*">
                     <br>
                     <!-- <label for="newusername"> User name:</label> -->
                     <input type="text" name="username" id="newusername" class="form-control" placeholder="User name*">

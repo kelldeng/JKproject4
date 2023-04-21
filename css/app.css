@@ -22,3 +22,10 @@ footer {
     margin: 4px 2px;
     border-radius: 12px;
   }
+
+.navbar-nav {
+    text-align: right;
+}
+.nav-link{
+    color: #fff;
+}
