@@ -83,23 +83,15 @@
               <div class="col-md-2"></div>
               <div class="col-md-8 content-wrapper " id="div-signup" style="display: none;">
                   <form id='form-signup'>
-                  <!-- need to make sure that the "name" field is same as the parameter names required in the lambda function -->
-                  <!-- ex: name = lname ->  -->
-                    <!-- <label for="newfirstname"> First name:</label> -->
                     <input type="text" name="fname" id="newfirstname" class="form-control" placeholder="First name*">
                     <br>
-                    <!-- <label for="newlastname"> Last name:</label> -->
                     <input type="text" name="lname" id="newlastname" class="form-control" placeholder="Last name*">
                     <br>
-                    <!-- <label for="newusername"> User name:</label> -->
                     <input type="text" name="username" id="newusername" class="form-control" placeholder="User name*">
                     <br>
-                    <!-- <label for="newpassword">Password:</label> -->
                     <input type="password" name="password" id="newpassword" class="form-control" placeholder="Password*">
                     <br>
-                    <!-- <label for="newpassword2">Confirmation Password:</label> -->
                     <input type="password" id="newpassword2" class="form-control" placeholder="Password again*">
-                    <!-- if you don't need to send the newpassword2 to the API, then you can get rid of the name attribute -->
                     <br>            
                     <div class="text-center">
                         <div id='signup_message' class=""></div>
@@ -113,9 +105,12 @@
               </div>
             </div>
         </div>
+        <!--TIPI Personality Test-->
         <div class = "container-fluid">
-          <h1>Quiz Time!</h1>
-          <p1>Please take some time to fill out these questions to figure out what your personality is.</p1>
+          <h1>Ten-Item Personality Inventory</h1>
+          <p1>Here are a number of personality traits that may or may not apply to you. 
+            Please write a number next to each statement to indicate the extent to which you agree or disagree with that statement. 
+            You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other.</p1>
           <br>
           <form action="/submit" method="post">
               <h3>Statement 1:</h3>
