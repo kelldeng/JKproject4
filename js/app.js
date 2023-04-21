@@ -127,7 +127,13 @@ let loginController = () => {
 	$("html, body").animate({ scrollTop: "0px" });
 };
 
+//quiz results feature
+let submitresultsController = () => {
 
+
+
+
+}
 
 $(document).ready( () => {
 
@@ -166,6 +172,10 @@ $(document).ready( () => {
 
     $('#btnMakeAccount').click(() => {
 		signupController();
+	});
+
+	$('#btnSubmitResults').click(() => {
+		submitresultsController();
 	});
 
     $('#btnSignup').click( () => {
