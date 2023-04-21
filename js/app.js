@@ -130,6 +130,10 @@ let loginController = () => {
 //quiz results feature
 let submitresultsController = () => {
 
+	let the_serialized_data = $("#form-tipi").serialize();
+	console.log(the_serialized_data);
+
+	
 
 
 
