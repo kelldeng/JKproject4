@@ -32,20 +32,16 @@
               <div class="col-md-6">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item secured">
-                      <a id="link-history" class="nav-link" href="#"><i class="fa fa-history"></i> History </a>
-                  </li>
-                  <li class="nav-item secured">
                       <a id="link-logout" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
                   </li>
-              </ul>  
+                </ul>  
               </div>
             </div>
           </div>
         </header>
 
         <section id="home">
-          <div id="container-3col" class="container-fluid" style="display:none;">
-            
+          <div id="container-3col" class="container-fluid" style="display:none;">  
             <div class="row text-center">
               <div class="col-md-12">
                 &nbsp;
@@ -59,7 +55,8 @@
                 &nbsp;
               </div>
             </div>
-
+          </div>
+            <!--Login-In Form-->
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-8 content-wrapper" id="div-login" style="display: none;">
@@ -79,8 +76,10 @@
                   <div id='login_message' class=""></div>
                 </form>
               </div>       
-              
-              <div class="col-md-8 content-wrapper " id="div-signup" style="display: none;">
+            </div>  
+            
+            <!--Sign-Up Form-->
+            <div class="col-md-8 content-wrapper " id="div-signup" style="display: none;">
                 <form id='form-signup'>
                   <!-- need to make sure that the "name" field is same as the parameter names required in the lambda function -->
                   <!-- ex: name = lname ->  -->
@@ -106,35 +105,11 @@
                         <input type="button" value="Make Account" id="btnMakeAccount" class="btn btn-rounded" style="font-size:2em;width:100%;" >
                         <br><br>
                         <input type="button" value="Cancel" id="btnCancel" class="btn btn-rounded" style="font-size:2em;width:100%;" >
-                        <br>
-                        
+                        <br>    
                     </div>
                 </form>
-          </div>
-        
-              <div class="col-md-2"></div>
-          </div>
-
-
-          </div>
-      
-    
-          </div>
+            </div>
         </section>
-        <section id="about"  style="display: none;">
-          <h2>About Section</h2>
-          <p>This is the about section of my website.</p>
-        </section>
-        <section id="contact"  style="display: none;">
-          <h2>Contact Section</h2>
-          <p>This is the contact section of my website.</p>
-        </section>
-
-        <div class="row">
-          <div class="col-md-12 text-center">
-          <div>&nbsp;</div>
-          </div>
-      </div>
 
         <footer>
           <p>2023 JK Project</p>

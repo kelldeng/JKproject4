@@ -26,7 +26,8 @@ let signupController = () => {
 	return; //to stop the argument :D
 	}
 
-	// if the password is too short
+
+	// if the password is too short 
 	if(newpassword.length < 8 || newpassword2.length < 8){
 		$("#signup_message").html("Password is too short. Please try again.");
 		$('#signup_message').addClass("alert alert-danger text-center");
