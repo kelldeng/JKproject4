@@ -32,20 +32,16 @@
               <div class="col-md-6">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item secured">
-                      <a id="link-history" class="nav-link" href="#"><i class="fa fa-history"></i> History </a>
-                  </li>
-                  <li class="nav-item secured">
                       <a id="link-logout" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
                   </li>
-              </ul>  
+                </ul>  
               </div>
             </div>
           </div>
         </header>
 
-        <section id="home">
-          <div id="container-3col" class="container-fluid" style="display:none;">
-            
+        <div class = "container-fluid">
+          <div id="container-3col" class="container-fluid" style="display:none;">  
             <div class="row text-center">
               <div class="col-md-12">
                 &nbsp;
@@ -59,7 +55,8 @@
                 &nbsp;
               </div>
             </div>
-
+          </div>
+            <!--Login-In Form-->
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-8 content-wrapper" id="div-login" style="display: none;">
@@ -79,9 +76,13 @@
                   <div id='login_message' class=""></div>
                 </form>
               </div>       
-              
+            </div>  
+            
+            <!--Sign-Up Form-->
+            <div class="row">
+              <div class="col-md-2"></div>
               <div class="col-md-8 content-wrapper " id="div-signup" style="display: none;">
-                <form id='form-signup'>
+                  <form id='form-signup'>
                   <!-- need to make sure that the "name" field is same as the parameter names required in the lambda function -->
                   <!-- ex: name = lname ->  -->
                     <!-- <label for="newfirstname"> First name:</label> -->
@@ -106,35 +107,141 @@
                         <input type="button" value="Make Account" id="btnMakeAccount" class="btn btn-rounded" style="font-size:2em;width:100%;" >
                         <br><br>
                         <input type="button" value="Cancel" id="btnCancel" class="btn btn-rounded" style="font-size:2em;width:100%;" >
-                        <br>
-                        
+                        <br><br>    
                     </div>
-                </form>
-          </div>
-        
-              <div class="col-md-2"></div>
-          </div>
+                  </form>
+              </div>
+            </div>
+        </div>
+        <div class = "container-fluid">
+          <h1>Quiz Time!</h1>
+          <p1>Please take some time to fill out these questions to figure out what your personality is.</p1>
+          <br>
+          <form action="/submit" method="post">
+              <h3>Statement 1:</h3>
+              <p>Extraverted, enthusiastic:</p>
+              <div id="statement1">
+              <input type="radio" name="statement1" value="1"> Disagree strongly
+              <input type="radio" name="statement1" value="2"> Disagree moderately
+              <input type="radio" name="statement1" value="3"> Disagree a little
+              <input type="radio" name="statement1" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement1" value="5"> Agree a little
+              <input type="radio" name="statement1" value="6"> Agree moderately
+              <input type="radio" name="statement1" value="7"> Agree strongly
+              </div>
 
+              <h3>Statement 2:</h3>
+              <p>Critical, quarrelsome:</p>
+              <div id="statement2">
+              <input type="radio" name="statement2" value="1"> Disagree strongly
+              <input type="radio" name="statement2" value="2"> Disagree moderately
+              <input type="radio" name="statement2" value="3"> Disagree a little
+              <input type="radio" name="statement2" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement2" value="5"> Agree a little
+              <input type="radio" name="statement2" value="6"> Agree moderately
+              <input type="radio" name="statement2" value="7"> Agree strongly
+              </div>
 
-          </div>
-      
-    
-          </div>
-        </section>
-        <section id="about"  style="display: none;">
-          <h2>About Section</h2>
-          <p>This is the about section of my website.</p>
-        </section>
-        <section id="contact"  style="display: none;">
-          <h2>Contact Section</h2>
-          <p>This is the contact section of my website.</p>
-        </section>
+              <h3>Statement 3:</h3>
+              <p>Dependable, self-disciplined:</p>
+              <div id="statement3">
+              <input type="radio" name="statement3" value="1"> Disagree strongly
+              <input type="radio" name="statement3" value="2"> Disagree moderately
+              <input type="radio" name="statement3" value="3"> Disagree a little
+              <input type="radio" name="statement3" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement3" value="5"> Agree a little
+              <input type="radio" name="statement3" value="6"> Agree moderately
+              <input type="radio" name="statement3" value="7"> Agree strongly
+              </div>
 
-        <div class="row">
-          <div class="col-md-12 text-center">
-          <div>&nbsp;</div>
-          </div>
-      </div>
+              <h3>Statement 4:</h3>
+              <p>Anxious, easily upset:</p>
+              <div id="statement4">
+              <input type="radio" name="statement4" value="1"> Disagree strongly
+              <input type="radio" name="statement4" value="2"> Disagree moderately
+              <input type="radio" name="statement4" value="3"> Disagree a little
+              <input type="radio" name="statement4" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement4" value="5"> Agree a little
+              <input type="radio" name="statement4" value="6"> Agree moderately
+              <input type="radio" name="statement4" value="7"> Agree strongly
+              </div>
+
+              <h3>Statement 5:</h3>
+              <p>Open to new experiences, complex:</p>
+              <div id="statement5">
+              <input type="radio" name="statement5" value="1"> Disagree strongly
+              <input type="radio" name="statement5" value="2"> Disagree moderately
+              <input type="radio" name="statement5" value="3"> Disagree a little
+              <input type="radio" name="statement5" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement5" value="5"> Agree a little
+              <input type="radio" name="statement5" value="6"> Agree moderately
+              <input type="radio" name="statement5" value="7"> Agree strongly
+              </div>
+
+              <h3>Statement 6:</h3>
+              <p>Open to new experiences, complex:</p>
+              <div id="statement6">
+              <input type="radio" name="statement6" value="1"> Disagree strongly
+              <input type="radio" name="statement6" value="2"> Disagree moderately
+              <input type="radio" name="statement6" value="3"> Disagree a little
+              <input type="radio" name="statement6" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement6" value="5"> Agree a little
+              <input type="radio" name="statement6" value="6"> Agree moderately
+              <input type="radio" name="statement6" value="7"> Agree strongly
+              </div>
+
+              <h3>Statement 7:</h3>
+              <p>Sympathetic, warm:</p>
+              <div id="statement7">
+              <input type="radio" name="statement7" value="1"> Disagree strongly
+              <input type="radio" name="statement7" value="2"> Disagree moderately
+              <input type="radio" name="statement7" value="3"> Disagree a little
+              <input type="radio" name="statement7" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement7" value="5"> Agree a little
+              <input type="radio" name="statement7" value="6"> Agree moderately
+              <input type="radio" name="statement7" value="7"> Agree strongly
+              </div>
+
+              <h3>Statement 8:</h3>
+              <p>Sympathetic, warm:</p>
+              <div id="statement8">
+              <input type="radio" name="statement8" value="1"> Disagree strongly
+              <input type="radio" name="statement8" value="2"> Disagree moderately
+              <input type="radio" name="statement8" value="3"> Disagree a little
+              <input type="radio" name="statement8" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement8" value="5"> Agree a little
+              <input type="radio" name="statement8" value="6"> Agree moderately
+              <input type="radio" name="statement8" value="7"> Agree strongly
+              </div>  
+
+              <h3>Statement 9:</h3>
+              <p>Sympathetic, warm:</p>
+              <div id="statement9">
+              <input type="radio" name="statement9" value="1"> Disagree strongly
+              <input type="radio" name="statement9" value="2"> Disagree moderately
+              <input type="radio" name="statement9" value="3"> Disagree a little
+              <input type="radio" name="statement9" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement9" value="5"> Agree a little
+              <input type="radio" name="statement9" value="6"> Agree moderately
+              <input type="radio" name="statement9" value="7"> Agree strongly
+              </div>  
+
+              <h3>Statement 10:</h3>
+              <p>Sympathetic, warm:</p>
+              <div id="statement10">
+              <input type="radio" name="statement10" value="1"> Disagree strongly
+              <input type="radio" name="statement10" value="2"> Disagree moderately
+              <input type="radio" name="statement10" value="3"> Disagree a little
+              <input type="radio" name="statement10" value="4"> Neither agree nor disagree
+              <input type="radio" name="statement10" value="5"> Agree a little
+              <input type="radio" name="statement10" value="6"> Agree moderately
+              <input type="radio" name="statement10" value="7"> Agree strongly
+              </div>
+              <br><br>
+              <input type="button" value="Submit Results" id="btnSubmitResults" class="btn btn-rounded" style="font-size:2em;width:100%;" >
+              <br>
+            </form>
+        </div>
 
         <footer>
           <p>2023 JK Project</p>
