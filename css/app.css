@@ -6,8 +6,8 @@ header {
 
 footer {
     background: linear-gradient(to bottom, #0ABAB5, #32a7be);
-    padding: 10px;
     color: #fff;
+    padding: 20px;
 }   
 
 .btn-rounded {
