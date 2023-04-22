@@ -130,12 +130,80 @@ let loginController = () => {
 //quiz results feature
 let submitresultsController = () => {
 
-	let the_serialized_data = $("#form-tipi").serialize();
-	console.log(the_serialized_data);
+	// the serializeddata == the querystring
+	var theQueryString = $("#form-tipi").serialize();
+	console.log(theQueryString);
 
+	// parse the query string into an object
+
+	const data = {};
+
+	if (theQueryString) {
+		theQueryString.slice(0).split('&').forEach((item) => {
+			// begins at index 0
+			// split('&') splits a string into an array of substrings using an separator, such as the & character
+			// from statement1=1&statement2=2&statement3=2 into ["statement1=1","statement2=2","statement3=2"]
+			// goal: return each individual statement key value pair
+		  const parts = item.split('='); // further split key value pair to [statement1,1]
+		  //console.log("parts: "+parts) 
+		  data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+		  // leave out everything else, only retain the value from the key value pair
+		  // decodeURIComponent() helps to decode the encoded strings such as & =, it begins with the first statement and ends at statement 10
+		});
+	  }
 	
+	// haha the easy code to get scores.
+	// const statement1Score = parseInt(data.statement1);
+	// //console.log(`The statement1Score is ${statement1Score}`)
+	// const statement2Score = 8 - (parseInt(data.statement2));
+	// const statement3Score = parseInt(data.statement3);
+	// const statement4Score = 8 - (parseInt(data.statement4));
+	// const statement5Score = parseInt(data.statement5);
+	// const statement6Score = 8 - (parseInt(data.statement6));
+	// const statement7Score = parseInt(data.statement7);
+	// const statement8Score = 8 - (parseInt(data.statement8));
+	// const statement9Score = parseInt(data.statement9);
+	// const statement10Score = 8- (parseInt(data.statement10));
 
 
+	// extract the scores for each statement, the fancy way 
+
+	const scores = [
+		parseInt(data.statement1),
+		parseInt(data.statement2),
+		parseInt(data.statement3),
+		parseInt(data.statement4),
+		parseInt(data.statement5),
+		parseInt(data.statement6),
+		parseInt(data.statement7),
+		parseInt(data.statement8),
+		parseInt(data.statement9),
+		parseInt(data.statement10)
+	  ]; console.log("orginal scores: "+scores)
+	
+	// Reverse code the scores for relevant statements
+
+	const reverseCodedStatements = [2, 4, 6, 8, 10];
+
+	for (let i = 0; i < scores.length; i++) {
+
+	if (reverseCodedStatements.includes(i + 1)) { // Add 1 to i to match the statement number with the index
+		// begins at index 0. But if taking index 1, which is 2nd in line, then use reverse order.
+		scores[i] = 8 - scores[i]; // starts at point 1, and uses a 7 point scale, so the last digit is 8 
+	}
+	}
+	console.log("updated scores after reversing: "+ scores)
+
+	let extraversionScore = (scores[0]+scores[5])/2;
+	console.log("extraversionScore is " + extraversionScore);
+	let agreeablenessScore = (scores[1]+scores[6])/2;
+	console.log("agreeablenessScore is " + agreeablenessScore);
+	let conscientiousnessScore = (scores[2]+scores[7])/2;
+	console.log("conscientiousnessScore is " + conscientiousnessScore);
+	let emotionalStabilityScore = (scores[3]+scores[8])/2;
+	console.log("emotionalStabilityScore is " + emotionalStabilityScore);
+	let opennessScore = (scores[4]+scores[9])/2;
+	console.log("opennessScore is " + opennessScore);
 
 }
 
