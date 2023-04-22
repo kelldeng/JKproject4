@@ -189,21 +189,34 @@ let submitresultsController = () => {
 
 	if (reverseCodedStatements.includes(i + 1)) { // Add 1 to i to match the statement number with the index
 		// begins at index 0. But if taking index 1, which is 2nd in line, then use reverse order.
-		scores[i] = 8 - scores[i]; // starts at point 1, and uses a 7 point scale, so the last digit is 8 
+		scores[i] = 8 - scores[i]; // starts at point 1, and uses a 7 point scale, so the last digit is 8
 	}
 	}
 	console.log("updated scores after reversing: "+ scores)
 
+	const newscores = []; //empty array
+
 	let extraversionScore = (scores[0]+scores[5])/2;
 	console.log("extraversionScore is " + extraversionScore);
+	newscores.push(extraversionScore); 
+
 	let agreeablenessScore = (scores[1]+scores[6])/2;
 	console.log("agreeablenessScore is " + agreeablenessScore);
+	newscores.push(agreeablenessScore); 
+
 	let conscientiousnessScore = (scores[2]+scores[7])/2;
 	console.log("conscientiousnessScore is " + conscientiousnessScore);
+	newscores.push(conscientiousnessScore); 
+
 	let emotionalStabilityScore = (scores[3]+scores[8])/2;
 	console.log("emotionalStabilityScore is " + emotionalStabilityScore);
+	newscores.push(emotionalStabilityScore); 
+
 	let opennessScore = (scores[4]+scores[9])/2;
 	console.log("opennessScore is " + opennessScore);
+	newscores.push(opennessScore); 
+
+	console.log(newscores)
 
 }
 
@@ -259,6 +272,10 @@ $(document).ready( () => {
 		$(".content-wrapper").hide(); // it hides the divs :D 	
 		$('#div-login').show();   //show the default page
 	});
+
+	$('#btnGetResults').click( ()=>{
+		$(".content-wrapper").hide(); // it hides the divs :D 	
+	})
 
 	/* what happens if the logout link is clicked? */
 	$('#link-logout').click( () => {
