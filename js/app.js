@@ -288,7 +288,6 @@ $(document).ready( () => {
 		$("#createdby").val(localStorage.studentid);
 		$("#createdby2").val(localStorage.studentid);
 		$("#createdby3").val(localStorage.studentid);
-		$("#assessmentid").val(localStorage.assessmentid);
 		// refresh the data
 		//cardsController();
 	}
