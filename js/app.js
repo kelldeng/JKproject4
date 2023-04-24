@@ -135,7 +135,7 @@ let submitresultsController = () => {
 
 	// the serializeddata == the querystring
 	var theQueryString = $("#form-tipi").serialize();
-	var createdby = $("#createdby").val(localStorage.studentid);
+	var createdby = $("#createdby").val();
 	console.log(theQueryString);
 
 	// parse the query string into an object
@@ -207,9 +207,12 @@ let submitresultsController = () => {
 	$('#tipi_message').addClass("alert alert-success text-center");
 
 	}
+	console.log(createdby)
+
 
 	//edit
 	const serializedData = $.param({
+		
 		createdby: createdby,
         extraversion: newscores[0],
         agreeableness: newscores[1],
