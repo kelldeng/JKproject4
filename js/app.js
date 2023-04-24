@@ -208,27 +208,27 @@ let submitresultsController = () => {
 	}
 	console.log("updated scores after reversing: "+ scores)
 
-	const newscores = []; //empty array
+	var newscores = []; //empty array
 
-	let extraversionScore = (scores[0]+scores[5])/2;
-	console.log("extraversionScore is " + extraversionScore);
-	newscores.push(extraversionScore); 
+	let extraversion = (scores[0]+scores[5])/2;
+	console.log("extraversionScore is " + extraversion);
+	newscores.push(extraversion); 
 
-	let agreeablenessScore = (scores[1]+scores[6])/2;
-	console.log("agreeablenessScore is " + agreeablenessScore);
-	newscores.push(agreeablenessScore); 
+	let agreeableness = (scores[1]+scores[6])/2;
+	console.log("agreeablenessScore is " + agreeableness);
+	newscores.push(agreeableness); 
 
-	let conscientiousnessScore = (scores[2]+scores[7])/2;
-	console.log("conscientiousnessScore is " + conscientiousnessScore);
-	newscores.push(conscientiousnessScore); 
+	let conscientiousness = (scores[2]+scores[7])/2;
+	console.log("conscientiousnessScore is " + conscientiousness);
+	newscores.push(conscientiousness); 
 
-	let emotionalStabilityScore = (scores[3]+scores[8])/2;
-	console.log("emotionalStabilityScore is " + emotionalStabilityScore);
-	newscores.push(emotionalStabilityScore); 
+	let emotionalstability = (scores[3]+scores[8])/2;
+	console.log("emotionalStabilityScore is " + emotionalstability);
+	newscores.push(emotionalstability); 
 
-	let opennessScore = (scores[4]+scores[9])/2;
-	console.log("opennessScore is " + opennessScore);
-	newscores.push(opennessScore); 
+	let openness = (scores[4]+scores[9])/2;
+	console.log("opennessScore is " + openness);
+	newscores.push(openness); 
 
 	console.log(newscores)
 	
@@ -238,22 +238,23 @@ let submitresultsController = () => {
 	}
 
 	//edit
-	const dataToSend = JSON.stringify({
-        extraversionScore: newscores[0],
-        agreeablenessScore: newscores[1],
-        conscientiousnessScore: newscores[2],
-        emotionalStabilityScore: newscores[3],
-        opennessScore: newscores[4]
+	const serializedData = $.param({
+        extraversion: newscores[0],
+        agreeableness: newscores[1],
+        conscientiousness: newscores[2],
+        emotionalstability: newscores[3],
+        openness: newscores[4]
     });
 
 	// Make the POST request
     $.ajax({
         url: endpoint01 + "/assessment",
-        data: dataToSend,
+        data: serializedData,
         method: "POST",
-        contentType: "application/json",
         success: (results) => {
             console.log(results);
+			$('#div-tipi').hide();
+			$('#div-results').show();
             // handle success response
             // e.g. display success message, update UI, etc.
         },
@@ -265,8 +266,10 @@ let submitresultsController = () => {
     });
 }
 
+let getresultsController = () => {
 
 
+}
 
 $(document).ready( () => {
 
