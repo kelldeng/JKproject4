@@ -136,6 +136,7 @@ let submitresultsController = () => {
 	// the serializeddata == the querystring
 	var theQueryString = $("#form-tipi").serialize();
 	var createdby = $("#createdby").val();
+	var personality = "";
 	console.log(theQueryString);
 
 	// parse the query string into an object
@@ -186,29 +187,33 @@ let submitresultsController = () => {
 
 	var newscores = []; //empty array
 
-	let extraversion = (scores[0]+scores[5])/2;
+	var extraversion = (scores[0]+scores[5])/2;
 	newscores.push(extraversion); 
 
-	let agreeableness = (scores[1]+scores[6])/2;
+	var agreeableness = (scores[1]+scores[6])/2;
 	newscores.push(agreeableness); 
 
-	let conscientiousness = (scores[2]+scores[7])/2;
+	var conscientiousness = (scores[2]+scores[7])/2;
 	newscores.push(conscientiousness); 
 
-	let emotionalstability = (scores[3]+scores[8])/2;
+	var emotionalstability = (scores[3]+scores[8])/2;
 	newscores.push(emotionalstability); 
 
-	let openness = (scores[4]+scores[9])/2;
+	var openness = (scores[4]+scores[9])/2;
 	newscores.push(openness); 
 
-	console.log(newscores)
+	console.log("newscores: "+newscores)
 	
 	$('#tipi_message').html("Success!");
 	$('#tipi_message').addClass("alert alert-success text-center");
 
 	}
-	console.log(createdby)
 
+	const EorI = extraversion >= agreeableness ? "E" : "I";
+  	const SorN = openness >= conscientiousness ? "N" : "S";
+ 	const TorF = agreeableness >= emotionalstability ? "F" : "T";
+  	const JorP = conscientiousness >= emotionalstability ? "J" : "P";
+	console.log(EorI + SorN + TorF + JorP)
 
 	//edit
 	const serializedData = $.param({
@@ -218,11 +223,17 @@ let submitresultsController = () => {
         agreeableness: newscores[1],
         conscientiousness: newscores[2],
         emotionalstability: newscores[3],
-        openness: newscores[4]
+        openness: newscores[4],
+		personality: EorI + SorN + TorF + JorP
+		
     });
 
-	console.log(serializedData);
+	console.log("serializedData: "+serializedData)
+
+
 	// Make the POST request
+
+
     $.ajax({
         url: endpoint01 + "/assessment",
         data: serializedData,
@@ -238,9 +249,27 @@ let submitresultsController = () => {
 
         }
     });
+
 }
 
 let getresultsController = () => {
+	let the_serialized_data = $("#form-currentassessment").serialize();
+	console.log(the_serialized_data);
+
+	// $.ajax({
+	// 	url: endpoint01 + "/assessment",
+	// 	method: "GET",
+	// 	data: the_serialized_data,
+	// 	success: (results)=>{
+	// 		console.log(results);
+			
+	// 	},
+	// 	error: (data)=>{
+	// 		console.log("Unexpected error");
+	// 		console.log(data);
+	// 	},
+	// })
+
 
 
 }
@@ -258,6 +287,7 @@ $(document).ready( () => {
 		$("#createdby").val(localStorage.studentid);
 		$("#createdby2").val(localStorage.studentid);
 		$("#createdby3").val(localStorage.studentid);
+		$("#assessmentid").val(localStorage.assessmentid);
 		// refresh the data
 		//cardsController();
 	}
@@ -287,6 +317,7 @@ $(document).ready( () => {
 
 		$('#btnSubmitResults').click(() => {
 			submitresultsController();
+			
 		});
 
 		$('#btnSignup').click( () => {
@@ -309,6 +340,8 @@ $(document).ready( () => {
 			localStorage.removeItem("userid");
 			// Now force the page to refresh
 			window.location = "./index.html";
+			
+
 		});
 
 	

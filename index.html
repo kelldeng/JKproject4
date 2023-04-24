@@ -96,9 +96,13 @@
               <br><br>    
           </div>
         </form>
+        
     </div>
   </div>
 </div>
+
+
+
 
 <div class="col-md-8 content-wrapper " id="div-tipi" style="display: none;">
   <!--TIPI Personality Test-->
@@ -107,6 +111,13 @@
       Please write a number next to each statement to indicate the extent to which you agree or disagree with that statement. 
       You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other.</p1>
     <br>
+
+    <!-- utility forms here-->
+      <form id="form-currentassessment">
+        <input type="hidden" id="createdby2" name="createdby">
+        <input type="hidden" id="assessmentid" name="assessmentid">
+      </form>
+
     <form id="form-tipi">
         <h3>Statement 1:</h3>
         <p>Extraverted, enthusiastic:</p>
@@ -170,7 +181,7 @@
         </div>
 
         <h3>Statement 6:</h3>
-        <p>Open to new experiences, complex:</p>
+        <p>Reserved, quiet:</p>
         <div id="statement6">
         <input type="radio" name="statement6" value="1"> Disagree strongly
         <input type="radio" name="statement6" value="2"> Disagree moderately
@@ -194,7 +205,7 @@
         </div>
 
         <h3>Statement 8:</h3>
-        <p>Sympathetic, warm:</p>
+        <p>Disorganized, careless:</p>
         <div id="statement8">
         <input type="radio" name="statement8" value="1"> Disagree strongly
         <input type="radio" name="statement8" value="2"> Disagree moderately
@@ -206,7 +217,7 @@
         </div>  
 
         <h3>Statement 9:</h3>
-        <p>Sympathetic, warm:</p>
+        <p>Calm, emotionally stable:</p>
         <div id="statement9">
         <input type="radio" name="statement9" value="1"> Disagree strongly
         <input type="radio" name="statement9" value="2"> Disagree moderately
@@ -218,7 +229,7 @@
         </div>  
 
         <h3>Statement 10:</h3>
-        <p>Sympathetic, warm:</p>
+        <p>Conventional, uncreative:</p>
         <div id="statement10">
         <input type="radio" name="statement10" value="1"> Disagree strongly
         <input type="radio" name="statement10" value="2"> Disagree moderately
@@ -240,6 +251,7 @@
   <div class="col-md-8 content-wrapper " id="div-results" style="display: none;">
     <h1>Results</h1>
     <p>Check here for your quiz results</p>
+    <input type="button" value="Get Results" id="btnGetResults" class="btn btn-rounded" style="font-size:2em;width:100%;" >
 
     <div class = "chartBox1">
       <canvas id="myChart1" ></canvas>
