@@ -111,7 +111,7 @@ let loginController = () => {
 			$('#div-login').hide(); //hide the login page
 			$("#container-3col").hide(); //hide the 3 column container
 			$("#container-2col").show(); //show the 2 column container
-			$('#div-cards').show();   //show the default page
+			$('#div-tipi').show();   //show the default page
 			// refresh the cards page
 			//cardsController();
 		},
@@ -130,11 +130,15 @@ let loginController = () => {
 //quiz results feature
 let submitresultsController = () => {
 
+	$('#tipi_message').html("");
+	$('#tipi_message').removeClass();
+
 	// the serializeddata == the querystring
 	var theQueryString = $("#form-tipi").serialize();
 	console.log(theQueryString);
 
 	// parse the query string into an object
+
 
 	const data = {};
 
@@ -151,6 +155,7 @@ let submitresultsController = () => {
 		  // decodeURIComponent() helps to decode the encoded strings such as & =, it begins with the first statement and ends at statement 10
 		});
 	  }
+
 	
 	// haha the easy code to get scores.
 	// const statement1Score = parseInt(data.statement1);
@@ -179,8 +184,17 @@ let submitresultsController = () => {
 		parseInt(data.statement8),
 		parseInt(data.statement9),
 		parseInt(data.statement10)
-	  ]; console.log("orginal scores: "+scores)
+	  ]; console.log("orginal scores: " + scores)
 	
+	// Check if any of the scores are NaN
+	if (scores.some(isNaN)) {
+		// Show error message or take appropriate action for NaN scores
+		console.log("Error: Some scores are not valid numbers");
+		$('#tipi_message').html('Error: Some scores are not valid numbers.');
+		$('#tipi_message').addClass("alert alert-danger text-center");
+		return; // Exit the function
+	}
+	else{	
 	// Reverse code the scores for relevant statements
 
 	const reverseCodedStatements = [2, 4, 6, 8, 10];
@@ -217,7 +231,11 @@ let submitresultsController = () => {
 	newscores.push(opennessScore); 
 
 	console.log(newscores)
+	
+	$('#tipi_message').html("Success!");
+	$('#tipi_message').addClass("alert alert-success text-center");
 
+	}
 }
 
 $(document).ready( () => {
@@ -228,7 +246,7 @@ $(document).ready( () => {
 		$("#container-2col").show();
 		$(".secured").removeClass("locked");		
 		//show the default div
-		$("#div-cards").show();		
+		$("#div-tipi").show();		
 		//assign a value to the createdby tags
 		$("#createdby").val(localStorage.userid);
 		$("#createdby2").val(localStorage.userid);
@@ -251,40 +269,40 @@ $(document).ready( () => {
     /* this controls navigation - show / hide pages as needed */
 
     /* what happens if the login button is clicked? */
-	$('#btnLogin').click( () => {
-		loginController();
-	});
 
-    $('#btnMakeAccount').click(() => {
-		signupController();
-	});
+		$('#btnLogin').click( () => {
+			loginController();
+		});
 
-	$('#btnSubmitResults').click(() => {
-		submitresultsController();
-	});
+		$('#btnMakeAccount').click(() => {
+			signupController();
+		});
 
-    $('#btnSignup').click( () => {
-		$(".content-wrapper").hide(); // it hides the divs :D 	
-		$('#div-signup').show(); 
-	});
+		$('#btnSubmitResults').click(() => {
+			submitresultsController();
+		});
 
-    $('#btnCancel').click( ()=> {
-		$(".content-wrapper").hide(); // it hides the divs :D 	
-		$('#div-login').show();   //show the default page
-	});
+		$('#btnSignup').click( () => {
+			$(".content-wrapper").hide(); // it hides the divs :D 	
+			$('#div-signup').show(); 
+		});
 
-	$('#btnGetResults').click( ()=>{
-		$(".content-wrapper").hide(); // it hides the divs :D 	
-	})
+		$('#btnCancel').click( ()=> {
+			$(".content-wrapper").hide(); // it hides the divs :D 	
+			$('#div-login').show();   //show the default page
+		});
 
-	/* what happens if the logout link is clicked? */
-	$('#link-logout').click( () => {
-		// First ... remove userid from localstorage
-		localStorage.removeItem("userid");
-		// Now force the page to refresh
-		window.location = "./index.html";
-	});
+		$('#btnGetResults').click( ()=>{
+			getresultsController();
+		})
 
+		/* what happens if the logout link is clicked? */
+		$('#link-logout').click( () => {
+			// First ... remove userid from localstorage
+			localStorage.removeItem("userid");
+			// Now force the page to refresh
+			window.location = "./index.html";
+		});
 
 	
 
