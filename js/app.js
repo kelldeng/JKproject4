@@ -99,10 +99,10 @@ let loginController = () => {
 		success: (results) => {
 			console.log(results);
 			//login succeeded.  Set userid.
-			localStorage.userid = results[0]['userid']; 
-			$("#createdby").val(localStorage.userid);
-			$("#createdby2").val(localStorage.userid);
-			$("#createdby3").val(localStorage.userid);
+			localStorage.studentid = results[0]['studentid']; 
+			$("#createdby").val(localStorage.studentid);
+			$("#createdby2").val(localStorage.studentid);
+			$("#createdby3").val(localStorage.studentid);
 			//manage the appearence of things...
 			$('#login_message').html('');
 			$('#login_message').removeClass();
@@ -239,6 +239,7 @@ let submitresultsController = () => {
 
 	//edit
 	const serializedData = $.param({
+		createdby: createdby,
         extraversion: newscores[0],
         agreeableness: newscores[1],
         conscientiousness: newscores[2],
@@ -246,6 +247,7 @@ let submitresultsController = () => {
         openness: newscores[4]
     });
 
+	console.log(serializedData);
 	// Make the POST request
     $.ajax({
         url: endpoint01 + "/assessment",
@@ -273,7 +275,7 @@ let getresultsController = () => {
 
 $(document).ready( () => {
 
-    if (localStorage.userid){
+    if (localStorage.studentid){
 		//there is a session
 		$("#container-3col").hide();
 		$("#container-2col").show();
@@ -281,9 +283,9 @@ $(document).ready( () => {
 		//show the default div
 		$("#div-tipi").show();		
 		//assign a value to the createdby tags
-		$("#createdby").val(localStorage.userid);
-		$("#createdby2").val(localStorage.userid);
-		$("#createdby3").val(localStorage.userid);
+		$("#createdby").val(localStorage.studentid);
+		$("#createdby2").val(localStorage.studentid);
+		$("#createdby3").val(localStorage.studentid);
 		// refresh the data
 		//cardsController();
 	}
