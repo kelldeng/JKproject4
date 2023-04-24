@@ -44,7 +44,7 @@ let signupController = () => {
 
 	// serialize the data from the form 
 	let the_serialized_data = $("#form-signup").serialize();
-	console.log("the_serialized_data: "+the_serialized_data);
+	console.log("the_serialized_data: "+ the_serialized_data);
 	// now calling the ajax call
 	$.ajax({
 		url: endpoint01 + "/users",
@@ -236,7 +236,37 @@ let submitresultsController = () => {
 	$('#tipi_message').addClass("alert alert-success text-center");
 
 	}
+
+	//edit
+	const dataToSend = JSON.stringify({
+        extraversionScore: newscores[0],
+        agreeablenessScore: newscores[1],
+        conscientiousnessScore: newscores[2],
+        emotionalStabilityScore: newscores[3],
+        opennessScore: newscores[4]
+    });
+
+	// Make the POST request
+    $.ajax({
+        url: endpoint01 + "/assessment",
+        data: dataToSend,
+        method: "POST",
+        contentType: "application/json",
+        success: (results) => {
+            console.log(results);
+            // handle success response
+            // e.g. display success message, update UI, etc.
+        },
+        error: (data) => {
+            console.log(data);
+            // handle error response
+            // e.g. display error message, update UI, etc.
+        }
+    });
 }
+
+
+
 
 $(document).ready( () => {
 
