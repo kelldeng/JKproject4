@@ -135,6 +135,7 @@ let submitresultsController = () => {
 
 	// the serializeddata == the querystring
 	var theQueryString = $("#form-tipi").serialize();
+	var createdby = $("#createdby").val(localStorage.studentid);
 	console.log(theQueryString);
 
 	// parse the query string into an object
@@ -144,34 +145,10 @@ let submitresultsController = () => {
 
 	if (theQueryString) {
 		theQueryString.slice(0).split('&').forEach((item) => {
-			// begins at index 0
-			// split('&') splits a string into an array of substrings using an separator, such as the & character
-			// from statement1=1&statement2=2&statement3=2 into ["statement1=1","statement2=2","statement3=2"]
-			// goal: return each individual statement key value pair
 		  const parts = item.split('='); // further split key value pair to [statement1,1]
-		  //console.log("parts: "+parts) 
 		  data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
-		  // leave out everything else, only retain the value from the key value pair
-		  // decodeURIComponent() helps to decode the encoded strings such as & =, it begins with the first statement and ends at statement 10
 		});
 	  }
-
-	
-	// haha the easy code to get scores.
-	// const statement1Score = parseInt(data.statement1);
-	// //console.log(`The statement1Score is ${statement1Score}`)
-	// const statement2Score = 8 - (parseInt(data.statement2));
-	// const statement3Score = parseInt(data.statement3);
-	// const statement4Score = 8 - (parseInt(data.statement4));
-	// const statement5Score = parseInt(data.statement5);
-	// const statement6Score = 8 - (parseInt(data.statement6));
-	// const statement7Score = parseInt(data.statement7);
-	// const statement8Score = 8 - (parseInt(data.statement8));
-	// const statement9Score = parseInt(data.statement9);
-	// const statement10Score = 8- (parseInt(data.statement10));
-
-
-	// extract the scores for each statement, the fancy way 
 
 	const scores = [
 		parseInt(data.statement1),
@@ -201,9 +178,8 @@ let submitresultsController = () => {
 
 	for (let i = 0; i < scores.length; i++) {
 
-	if (reverseCodedStatements.includes(i + 1)) { // Add 1 to i to match the statement number with the index
-		// begins at index 0. But if taking index 1, which is 2nd in line, then use reverse order.
-		scores[i] = 8 - scores[i]; // starts at point 1, and uses a 7 point scale, so the last digit is 8
+	if (reverseCodedStatements.includes(i + 1)) { 
+		scores[i] = 8 - scores[i];
 	}
 	}
 	console.log("updated scores after reversing: "+ scores)
@@ -211,23 +187,18 @@ let submitresultsController = () => {
 	var newscores = []; //empty array
 
 	let extraversion = (scores[0]+scores[5])/2;
-	console.log("extraversionScore is " + extraversion);
 	newscores.push(extraversion); 
 
 	let agreeableness = (scores[1]+scores[6])/2;
-	console.log("agreeablenessScore is " + agreeableness);
 	newscores.push(agreeableness); 
 
 	let conscientiousness = (scores[2]+scores[7])/2;
-	console.log("conscientiousnessScore is " + conscientiousness);
 	newscores.push(conscientiousness); 
 
 	let emotionalstability = (scores[3]+scores[8])/2;
-	console.log("emotionalStabilityScore is " + emotionalstability);
 	newscores.push(emotionalstability); 
 
 	let openness = (scores[4]+scores[9])/2;
-	console.log("opennessScore is " + openness);
 	newscores.push(openness); 
 
 	console.log(newscores)
@@ -257,13 +228,11 @@ let submitresultsController = () => {
             console.log(results);
 			$('#div-tipi').hide();
 			$('#div-results').show();
-            // handle success response
-            // e.g. display success message, update UI, etc.
+
         },
         error: (data) => {
             console.log(data);
-            // handle error response
-            // e.g. display error message, update UI, etc.
+
         }
     });
 }
