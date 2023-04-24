@@ -231,7 +231,7 @@ let submitresultsController = () => {
             console.log(results);
 			$('#div-tipi').hide();
 			$('#div-results').show();
-
+			getresultsController();
         },
         error: (data) => {
             console.log(data);
@@ -241,6 +241,7 @@ let submitresultsController = () => {
 }
 
 let getresultsController = () => {
+	var traits = ["Extraversion","Agreeableness","Conscientiousness","Emotional Stability","Openness"];
 
 
 }
