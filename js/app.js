@@ -7,6 +7,8 @@ let endpoint01 = "https://jchvf589sh.execute-api.us-east-1.amazonaws.com/default
 
 // feature 1: create new account
 
+let newscores = []; //empty array
+
 let signupController = () => {
 
 	$("#signup_message").html("");
@@ -185,7 +187,6 @@ let submitresultsController = () => {
 	}
 	console.log("updated scores after reversing: "+ scores)
 
-	var newscores = []; //empty array
 
 	var extraversion = (scores[0]+scores[5])/2;
 	newscores.push(extraversion); 
@@ -252,10 +253,42 @@ let submitresultsController = () => {
 }
 
 let getresultsController = () => {
-	let the_serialized_data = $("#form-currentassessment").serialize();
-	console.log(the_serialized_data);
 	//display personality, scale -> graph 
-
+	var traits = ["Extraversion","Agreeableness","Conscientiousness","Emotional Stability","Openness"];
+	var ctx = document.getElementById('myChart1').getContext('2d');
+	var myChart1 = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: traits,
+			datasets: [{
+				axis: 'y',
+				label: 'TIPI Results',
+				data: newscores,
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)'
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)'
+					],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+				  beginAtZero: true
+				}
+			}
+		}
+	});
 
 	// $.ajax({
 	// 	url: endpoint01 + "/assessment",
@@ -271,7 +304,6 @@ let getresultsController = () => {
 	// 	},
 	// })
 
-	var traits = ["Extraversion","Agreeableness","Conscientiousness","Emotional Stability","Openness"];
 
 
 }
