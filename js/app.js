@@ -253,16 +253,19 @@ let submitresultsController = () => {
 }
 
 let getresultsController = () => {
+
 	//display personality, scale -> graph 
 	var traits = ["Extraversion","Agreeableness","Conscientiousness","Emotional Stability","Openness"];
 	var ctx = document.getElementById('myChart1').getContext('2d');
+
+	Chart.defaults.font.size = 16;
 	var myChart1 = new Chart(ctx, {
 		type: 'bar',
 		data: {
 			labels: traits,
 			datasets: [{
-				axis: 'y',
-				label: 'TIPI Results',
+				//axis: 'x',
+				label: 'TIPI Scores',
 				data: newscores,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
@@ -282,27 +285,34 @@ let getresultsController = () => {
 			}]
 		},
 		options: {
+			indexAxis: 'y', // display content horizontally
 			scales: {
+				x:{
+					min: 0,
+				  	max: 7
+				},
 				y: {
-				  beginAtZero: true
+				  	beginAtZero: true,
 				}
+			
 			}
 		}
 	});
 
-	// $.ajax({
-	// 	url: endpoint01 + "/assessment",
-	// 	method: "GET",
-	// 	data: the_serialized_data,
-	// 	success: (results)=>{
-	// 		console.log(results);
+
+	$.ajax({
+		url: endpoint01 + "/assessment",
+		method: "GET",
+		data: the_serialized_data,
+		success: (results)=>{
+			console.log(results);
 			
-	// 	},
-	// 	error: (data)=>{
-	// 		console.log("Unexpected error");
-	// 		console.log(data);
-	// 	},
-	// })
+		},
+		error: (data)=>{
+			console.log("Unexpected error");
+			console.log(data);
+		},
+	})
 
 
 
