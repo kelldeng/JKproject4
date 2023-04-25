@@ -214,17 +214,16 @@ let submitresultsController = () => {
  	const TorF = agreeableness >= emotionalstability ? "F" : "T";
   	const JorP = conscientiousness >= emotionalstability ? "J" : "P";
 	console.log(EorI + SorN + TorF + JorP)
+	var personality = EorI + SorN + TorF + JorP;
 
-	//edit
-	const serializedData = $.param({
-		
+	var serializedData = $.param({
 		createdby: createdby,
         extraversion: newscores[0],
         agreeableness: newscores[1],
         conscientiousness: newscores[2],
         emotionalstability: newscores[3],
         openness: newscores[4],
-		personality: EorI + SorN + TorF + JorP
+		personality: personality
 		
     });
 
@@ -255,6 +254,8 @@ let submitresultsController = () => {
 let getresultsController = () => {
 	let the_serialized_data = $("#form-currentassessment").serialize();
 	console.log(the_serialized_data);
+	//display personality, scale -> graph 
+
 
 	// $.ajax({
 	// 	url: endpoint01 + "/assessment",
