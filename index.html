@@ -20,12 +20,11 @@
     <!--Chart JS API-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
-
-    <!-- Link to 3rd party API ONet -->
-    <script src="OnetWebService.js"></script>
-    <script src="keyword_search.js"></script>
-    <script src="https://services.onetcenter.org/embed/ip.js?client=community_mis_temple"></script>
-    <div class="embed-onet-ip"></div>
+    <!-- ONet API-->
+    <script src="js/OnetWebService.js"></script>
+    <script src="js/keyword_search.js"></script>
+    <!-- <script src="https://services.onetcenter.org/embed/ip.js?client=community_mis_temple"></script> -->
+    <!-- <div class="embed-onet-ip"></div> -->
 </head>
 
 <body>
@@ -241,55 +240,7 @@
           <br>
           <div id="tipi_message"></div>
     </div>
-    <div class="col-md-8 content-wrapper " id="div-onet">
-  
-        <h1 class="mb-4">Keyword Search Demo</h1>
-        
-        <form id="accountForm">
-          <div class="form-group" style="max-width: 500px">
-            <label for="accountName">O*NET Web Services username</label>
-            <input type="text" class="form-control" id="accountName" aria-describedby="accountNameHelp" value="community_mis_temple">
-            <small id="accountNameHelp">You must register the domain “<span id="domainOrigin">(not loaded)</span>” in <a target="_blank" href="https://services.onetcenter.org/developer/editorigin">My Account</a></small>
-          </div>
-          <button type="submit" id="accountConnect" class="btn btn-primary">Connect</button>
-        </form>
-        
-        <div id="connectSuccess">
-          <div id="connectPanel" class="alert alert-primary my-3">
-            Connected to O*NET Web Services version <span id="connectVersion"></span>
-          </div>
-          
-          <form id="searchForm">
-            <div class="form-group" style="max-width: 500px">
-              <label for="searchQuery">Keyword search query</label>
-              <input type="text" class="form-control" id="searchQuery" placeholder="dental assistant"></input>
-            </div>
-            <button type="submit" id="searchSubmit" class="btn btn-primary">Search</button>
-          </form>
-          
-          <div id="searchSuccess">
-            <div id="searchNoResults" class="alert alert-warning my-3">
-              No relevant occupations were found.
-            </div>
-            <div id="searchResults" class="my-3">
-              <p>
-                Most relevant occupations for “<span id="searchQueryEcho"></span>”:
-              </p>
-              <ul>
-                <li id="searchItem0"><span id="searchCode0"></span> &#8212; <span id="searchTitle0"></span></li>
-                <li id="searchItem1"><span id="searchCode1"></span> &#8212; <span id="searchTitle1"></span></li>
-                <li id="searchItem2"><span id="searchCode2"></span> &#8212; <span id="searchTitle2"></span></li>
-                <li id="searchItem3"><span id="searchCode3"></span> &#8212; <span id="searchTitle3"></span></li>
-                <li id="searchItem4"><span id="searchCode4"></span> &#8212; <span id="searchTitle4"></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <div id="errorPanel" class="alert alert-danger my-3">
-          <span id="errorMessage"></span>
-        </div>
-    </div>
+   
     <div class="col-md-2"></div>
   </div>
 </div>
@@ -313,6 +264,75 @@
 
     <div id="majors_message"></div>
     <br><br>
+
+    <div class="col-md-8 content-wrapper " id="div-onet">
+  
+      <h1 class="mb-4">Keyword Search Demo</h1>
+      
+      <form id="accountForm">
+        <div class="form-group" style="max-width: 500px">
+          <label for="accountName">O*NET Web Services username</label>
+          <input type="text" class="form-control" id="accountName" aria-describedby="accountNameHelp" value="community_mis_temple">
+          <small id="accountNameHelp">You must register the domain “<span id="domainOrigin">(not loaded)</span>” in <a target="_blank" href="https://services.onetcenter.org/developer/editorigin">My Account</a></small>
+        </div>
+        <button type="submit" id="accountConnect" class="btn btn-primary">Connect</button>
+      </form>
+      
+      <div id="connectSuccess">
+        <div id="connectPanel" class="alert alert-primary my-3">
+          Connected to O*NET Web Services version <span id="connectVersion"></span>
+        </div>
+        
+        <form id="searchForm">
+          <div class="form-group" style="max-width: 500px">
+            <label for="searchQuery">Choose a major:</label>
+            <select name="searchQuery" id="searchQuery">
+              <option value="accounting">Accounting</option>
+              <option value="actuarial science">Actuarial Science</option>
+              <option value="business management">Business Management</option>
+              <option value="economics">Economics</option>
+              <option value="entrepreneurship innovation management">Entrepreneurship &amp; Innovation Management</option>
+              <option value="finance">Finance</option>
+              <option value="financial planning">Financial Planning</option>
+              <option value="human resource management">Human Resource Management</option>
+              <option value="international business">International Business</option>
+              <option value="legal studies">Legal Studies</option>
+              <option value="management information systems">Management Information Systems</option>
+              <option value="marketing">Marketing</option>
+              <option value="real estate">Real Estate</option>
+              <option value="risk management insurance">Risk Management &amp; Insurance</option>
+              <option value="statistical science data analytics">Statistical Science and Data Analytics</option>
+              <option value="supply chain management">Supply Chain Management</option>
+            </select>
+            <br><br>
+            <!-- <input type="text" class="form-control" id="searchQuery" placeholder="dental assistant"></input> -->
+          </div>
+          <button type="submit" id="searchSubmit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        <div id="searchSuccess">
+          <div id="searchNoResults" class="alert alert-warning my-3">
+            No relevant occupations were found.
+          </div>
+          <div id="searchResults" class="my-3">
+            <p>
+              Most relevant occupations for “<span id="searchQueryEcho"></span>”:
+            </p>
+            <ul>
+              <li id="searchItem0"><span id="searchCode0"></span> &#8212; <span id="searchTitle0"></span></li>
+              <li id="searchItem1"><span id="searchCode1"></span> &#8212; <span id="searchTitle1"></span></li>
+              <li id="searchItem2"><span id="searchCode2"></span> &#8212; <span id="searchTitle2"></span></li>
+              <li id="searchItem3"><span id="searchCode3"></span> &#8212; <span id="searchTitle3"></span></li>
+              <li id="searchItem4"><span id="searchCode4"></span> &#8212; <span id="searchTitle4"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div id="errorPanel" class="alert alert-danger my-3">
+        <span id="errorMessage"></span>
+      </div>
+    </div>
   </div>
 
 
