@@ -5,10 +5,10 @@ let endpoint01 = "https://jchvf589sh.execute-api.us-east-1.amazonaws.com/default
 
 /* SUPPORTING FUNCTIONS */
 
-// feature 1: create new account
-
 let newscores = []; //empty array
+let personality= ""; //empty personality 
 
+// feature 1: create new account
 let signupController = () => {
 
 	$("#signup_message").html("");
@@ -43,11 +43,9 @@ let signupController = () => {
 	return; //to stop the argument :D
 	}
 	
-
-	// serialize the data from the form 
 	let the_serialized_data = $("#form-signup").serialize();
 	console.log("the_serialized_data: "+ the_serialized_data);
-	// now calling the ajax call
+
 	$.ajax({
 		url: endpoint01 + "/users",
 		data: the_serialized_data,
@@ -75,7 +73,6 @@ let signupController = () => {
 }
 
 // feature 0, get login info 
-
 let loginController = () => {
 	//clear any previous messages
 	$('#login_message').html("");
@@ -124,8 +121,6 @@ let loginController = () => {
 			$('#login_message').addClass("alert alert-danger text-center");
 		}
 	})
-
-	//scroll to top of page
 	$("html, body").animate({ scrollTop: "0px" });
 };
 
@@ -138,11 +133,7 @@ let submitresultsController = () => {
 	// the serializeddata == the querystring
 	var theQueryString = $("#form-tipi").serialize();
 	var createdby = $("#createdby").val();
-	var personality = "";
 	console.log(theQueryString);
-
-	// parse the query string into an object
-
 
 	const data = {};
 
@@ -180,10 +171,9 @@ let submitresultsController = () => {
 	const reverseCodedStatements = [2, 4, 6, 8, 10];
 
 	for (let i = 0; i < scores.length; i++) {
-
-	if (reverseCodedStatements.includes(i + 1)) { 
-		scores[i] = 8 - scores[i];
-	}
+		if (reverseCodedStatements.includes(i + 1)) { 
+			scores[i] = 8 - scores[i];
+		}
 	}
 	console.log("updated scores after reversing: "+ scores)
 
@@ -207,7 +197,6 @@ let submitresultsController = () => {
 	
 	$('#tipi_message').html("Success!");
 	$('#tipi_message').addClass("alert alert-success text-center");
-
 	}
 
 	const EorI = extraversion >= agreeableness ? "E" : "I";
@@ -215,7 +204,7 @@ let submitresultsController = () => {
  	const TorF = agreeableness >= emotionalstability ? "F" : "T";
   	const JorP = conscientiousness >= emotionalstability ? "J" : "P";
 	console.log(EorI + SorN + TorF + JorP)
-	var personality = EorI + SorN + TorF + JorP;
+	personality = EorI + SorN + TorF + JorP;
 
 	var serializedData = $.param({
 		createdby: createdby,
@@ -225,14 +214,9 @@ let submitresultsController = () => {
         emotionalstability: newscores[3],
         openness: newscores[4],
 		personality: personality
-		
     });
 
-	console.log("serializedData: "+serializedData)
-
-
-	// Make the POST request
-
+	console.log("serializedData: " + serializedData)
 
     $.ajax({
         url: endpoint01 + "/assessment",
@@ -246,10 +230,8 @@ let submitresultsController = () => {
         },
         error: (data) => {
             console.log(data);
-
         }
     });
-
 }
 
 let getresultsController = () => {
@@ -299,11 +281,16 @@ let getresultsController = () => {
 		}
 	});
 
+	var personalityData = $.param({
+		personality: personality
+    });
+
+	console.log(personalityData)
 
 	$.ajax({
-		url: endpoint01 + "/assessment",
+		url: endpoint01 + "/results",
 		method: "GET",
-		data: the_serialized_data,
+		data: personalityData,
 		success: (results)=>{
 			console.log(results);
 			
@@ -326,7 +313,7 @@ $(document).ready( () => {
 		$("#container-2col").show();
 		$(".secured").removeClass("locked");		
 		//show the default div
-		$("#div-tipi").show();		
+		$("#div-tipi").show();	
 		//assign a value to the createdby tags
 		$("#createdby").val(localStorage.studentid);
 		$("#createdby2").val(localStorage.studentid);
@@ -380,7 +367,7 @@ $(document).ready( () => {
 		/* what happens if the logout link is clicked? */
 		$('#link-logout').click( () => {
 			// First ... remove userid from localstorage
-			localStorage.removeItem("userid");
+			localStorage.removeItem("studentid");
 			// Now force the page to refresh
 			window.location = "./index.html";
 			
