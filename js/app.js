@@ -293,6 +293,7 @@ let getresultsController = () => {
 		data: personalityData,
 		success: (results)=>{
 			console.log(results);
+			//adding this to it 
 			$('#majors_message').html("Success!");
 		},
 		error: (data)=>{
