@@ -1,5 +1,4 @@
 "use strict";
-
 var onet_ws = null;
 
 function hide_element(id) {
@@ -50,11 +49,11 @@ function init_keyword_search_js() {
   hide_element('connectSuccess');
   hide_element('searchSuccess');
   
-  if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
-    show_error('You must run this demo from an HTTP or HTTPS server.');
-    hide_element('accountForm');
-    return;
-  }
+  // if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
+  //   show_error('You must run this demo from an HTTP or HTTPS server.');
+  //   hide_element('accountForm');
+  //   return;
+  // }
   
   attach_event('accountForm', 'submit', function(e) {
     e.preventDefault();
@@ -87,7 +86,9 @@ function init_keyword_search_js() {
     hide_element('searchNoResults');
     hide_element('searchResults');
     
+    var userdata ;
     var kwquery = read_input('searchQuery');
+    console.log("kwquery"+kwquery)
     if (kwquery == '') {
       show_error('Please enter one or more search terms.');
       return;
@@ -102,14 +103,37 @@ function init_keyword_search_js() {
       if (!kwresults.hasOwnProperty('occupation') || !kwresults.occupation.length) {
         show_element('searchNoResults');
       } else {
+
         for (var i = 0; i < 5; i++) {
-          if (i >= kwresults.occupation.length) {
-            hide_element('searchItem' + i);
-          } else {
+          (function(i) {
+            userdata = kwresults.occupation[i].code
+            console.log("userdata:"+userdata);
+
+            $.ajax({
+              url: "https://services.onetcenter.org/ws/mnm/careers/"+userdata+"/job_outlook?client=community_mis_temple",
+              method:"GET",
+              headers: { 'Accept': 'application/json'},
+              success: (results) => {
+                console.log(results);
+
+                  const salary = results.salary["annual_median"];
+                  console.log("salary:"+salary);
+                  $("#searchSalary" + i).html(salary);
+
+              },
+              error: (data) => {
+                console.log(data);
+              },
+              
+            });
+            // console.log("kwresults.occupation: "+kwresults.occupation)
+            // console.log("kwresults: "+kwresults)
             fill_element('searchCode' + i, kwresults.occupation[i].code);
             fill_element('searchTitle' + i, kwresults.occupation[i].title);
+            fill_element('searchTags' + i, kwresults.occupation[i].tags["bright_outlook"]);
             show_element('searchItem' + i);
-          }
+          })(i);
+          // }
         }
         show_element('searchResults');
       }
