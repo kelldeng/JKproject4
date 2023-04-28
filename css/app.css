@@ -8,6 +8,8 @@ footer {
     background: linear-gradient(to bottom, #0ABAB5, #32a7be);
     color: #fff;
     padding: 20px;
+    width: 100%;
+    flex-shrink: 0;
 }   
 
 .btn-rounded {
@@ -32,4 +34,11 @@ footer {
 
 .div_id{
     text-align: center;
+}
+
+.navbar-brand {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
