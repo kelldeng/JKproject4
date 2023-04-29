@@ -293,7 +293,15 @@ let getresultsController = () => {
 		data: personalityData,
 		success: (results)=>{
 			console.log(results);
-			//adding this to it 
+			let majorarray = []
+			majorarray.push(results[0].major1)
+			majorarray.push(results[0].major2)
+			majorarray.push(results[0].major3)
+			console.log(majorarray)
+			
+			for(let i=0;i<majorarray.length;i++){
+			}
+
 			$('#majors_message').html("Success!");
 		},
 		error: (data)=>{
