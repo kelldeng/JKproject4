@@ -298,42 +298,21 @@ let getresultsController = () => {
 			majorarray.push(results[0].major2)
 			majorarray.push(results[0].major3)
 			console.log(majorarray)
-			let link = 'https://bulletin.temple.edu/undergraduate/fox-business-management/'
-
+			
 			for(let i=0;i<majorarray.length;i++){
-				let majorName = majorarray[i];
-				let majorLink;
-			
-				if (majorarray[i] == "Entrepreneurship &​ Innovation Management") {
-					majorLink = $('<a></a>').attr('href', link + "entrepreneurship").text(majorName);
-				}
-				else if (majorarray[i] == "International Business") {
-					majorLink = $('<a></a>').attr('href', link + "international-business-administration").text(majorName);
-				}
-				else if (majorarray[i] == "Real Estate") {
-					majorLink = $('<a></a>').attr('href', link + "realestate").text(majorName);
-				}
-				else if (majorarray[i] == "Risk Management & Insurance") {
-					majorLink = $('<a></a>').attr('href', link + "risk-management-insurance").text(majorName);
-				}
-				else if (majorarray[i] == "Statistical Science & Data Analytics") {
-					majorLink = $('<a></a>').attr('href', link + "statistical-science-data-analytics").text(majorName);
-				}
-				else{
-					majorLink = $('<a></a>').attr('href', link + majorName.toLowerCase().replace(/\s+/g, "-")).text(majorName);
-				}
-			
-				// append list item to ordered list
-				$('#majors_list ol').append($('<li></li>').append(majorLink));
 			}
+
+			$('#majors_message').html("Success!");
 		},
 		error: (data)=>{
 			console.log("Unexpected error");
 			console.log(data);
 		},
 	})
-}
 
+
+
+}
 
 $(document).ready( () => {
 
