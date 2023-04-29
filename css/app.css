@@ -8,7 +8,7 @@ footer {
     background: linear-gradient(to bottom, #0ABAB5, #32a7be);
     color: #fff;
     padding: 20px;
-    min-height: 150px;
+    min-height: 100px;
     position: fixed;
     bottom: 0;
 }   
