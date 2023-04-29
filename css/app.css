@@ -8,10 +8,12 @@ footer {
     background: linear-gradient(to bottom, #0ABAB5, #32a7be);
     color: #fff;
     padding: 20px;
-    min-height: 100px;
-    position: static;
-    bottom: 0;
 }   
+
+.container-fluid{
+	background-color: #fff;
+	min-height: 250px;
+}
 
 /* .container-fluid{
 	background-color: #fff;
