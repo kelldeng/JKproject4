@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -50,13 +51,28 @@
 <div class="container-fluid">
 <!--Login-In Form-->
   <div class="row">
+    <div class="col-md-12 text-center">
+            &nbsp;
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+            &nbsp;
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+              &nbsp;
+      </div>
+    </div>  
+  </div>
+  <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8 content-wrapper" id="div-login" style="display: none;">
       <form id='form-login'>
-        <!-- <label for="username" class = hidden>User name:</label> -->
+        <label for="username" class = hidden>User name:</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Username">
         <br>
-        <!-- <label for="password">Password:</label> -->
+        <label for="password" class = hidden>Password:</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="Password">
         <br>
         <div class="text-center">
@@ -77,15 +93,20 @@
     <div class="col-md-2"></div>
     <div class="col-md-8 content-wrapper" id="div-signup" style="display: none;">
         <form id='form-signup'>
-          <input type="text" name="fname" id="newfirstname" class="form-control" placeholder="First name*">
-          <br>
-          <input type="text" name="lname" id="newlastname" class="form-control" placeholder="Last name*">
-          <br>
-          <input type="text" name="username" id="newusername" class="form-control" placeholder="User name*">
-          <br>
-          <input type="password" name="password" id="newpassword" class="form-control" placeholder="Password*">
-          <br>
-          <input type="password" id="newpassword2" class="form-control" placeholder="Password again*">
+          <label for="newfirstname" class = hidden>First name*</label>
+          <input type="text" name="fname" id="newfirstname" class="form-control" >
+
+          <label for="newlastname" class = hidden>Last name*</label>
+          <input type="text" name="lname" id="newlastname" class="form-control" >
+
+          <label for="newusername" class = hidden>User name*</label>
+          <input type="text" name="username" id="newusername" class="form-control" >
+ 
+          <label for="newpassword" class = hidden>Password*</label>
+          <input type="password" name="password" id="newpassword" class="form-control" >
+         
+          <label for="newpassword2" class = hidden>Password again*</label>
+          <input type="password" id="newpassword2" class="form-control" >
           <br>            
           <div class="text-center">
               <div id='signup_message' class=""></div>
@@ -106,8 +127,9 @@
         <br><br>
     
         <form id="form-tipi" >
-            <h3>Statement 1:</h3>
-            <p>Extraverted, enthusiastic:</p>
+          <fieldset>
+            <legend>Statement 1:</legend>
+            <p style =" font-size:18px">Extraverted, enthusiastic:</p>
             <input type ="hidden" id = "createdby" name = "createdby"> 
             <div id="statement1">
               <label><input type="radio" name="statement1" value="1"> Disagree strongly</label>
@@ -118,9 +140,10 @@
               <label><input type="radio" name="statement1" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement1" value="7"> Agree strongly</label>
             </div>
-
-            <h3>Statement 2:</h3>
-            <p>Critical, quarrelsome:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 2:</legend>
+            <p style =" font-size:18px">Critical, quarrelsome:</p>
             <div id="statement2">
               <label><input type="radio" name="statement2" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement2" value="2"> Disagree moderately</label>
@@ -130,9 +153,10 @@
               <label><input type="radio" name="statement2" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement2" value="7"> Agree strongly</label>
             </div>
-    
-            <h3>Statement 3:</h3>
-            <p>Dependable, self-disciplined:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 3:</legend>
+            <p style =" font-size:18px">Dependable, self-disciplined:</p>
             <div id="statement3">
               <label><input type="radio" name="statement3" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement3" value="2"> Disagree moderately</label>
@@ -142,9 +166,10 @@
               <label><input type="radio" name="statement3" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement3" value="7"> Agree strongly</label>
             </div>
-    
-            <h3>Statement 4:</h3>
-            <p>Anxious, easily upset:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 4:</legend>
+            <p style =" font-size:18px">Anxious, easily upset:</p>
             <div id="statement4">
               <label><input type="radio" name="statement4" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement4" value="2"> Disagree moderately</label>
@@ -154,9 +179,10 @@
               <label><input type="radio" name="statement4" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement4" value="7"> Agree strongly</label>
             </div>
-    
-            <h3>Statement 5:</h3>
-            <p>Open to new experiences, complex:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 5:</legend>
+            <p style =" font-size:18px">Open to new experiences, complex:</p>
             <div id="statement5">
               <label><input type="radio" name="statement5" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement5" value="2"> Disagree moderately</label>
@@ -166,9 +192,10 @@
               <label><input type="radio" name="statement5" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement5" value="7"> Agree strongly</label>
             </div>
-    
-            <h3>Statement 6:</h3>
-            <p>Reserved, quiet:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 6:</legend>
+            <p style =" font-size:18px">Reserved, quiet:</p>
             <div id="statement6">
               <label> <input type="radio" name="statement6" value="1"> Disagree strongly</label>
               <label> <input type="radio" name="statement6" value="2"> Disagree moderately</label>
@@ -178,9 +205,10 @@
               <label><input type="radio" name="statement6" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement6" value="7"> Agree strongly</label>
             </div>
-    
-            <h3>Statement 7:</h3>
-            <p>Sympathetic, warm:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 7:</legend>
+            <p style =" font-size:18px">Sympathetic, warm:</p>
             <div id="statement7">
               <label><input type="radio" name="statement7" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement7" value="2"> Disagree moderately</label>
@@ -190,9 +218,10 @@
               <label><input type="radio" name="statement7" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement7" value="7"> Agree strongly</label>
             </div>
-    
-            <h3>Statement 8:</h3>
-            <p>Disorganized, careless:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 8:</legend>
+            <p style =" font-size:18px">Disorganized, careless:</p>
             <div id="statement8">
               <label><input type="radio" name="statement8" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement8" value="2"> Disagree moderately</label>
@@ -202,9 +231,10 @@
               <label><input type="radio" name="statement8" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement8" value="7"> Agree strongly</label>
             </div>  
-    
-            <h3>Statement 9:</h3>
-            <p>Calm, emotionally stable:</p>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 9:</legend>
+            <p style =" font-size:18px">Calm, emotionally stable:</p>
             <div id="statement9">
               <label><input type="radio" name="statement9" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement9" value="2"> Disagree moderately</label>
@@ -213,10 +243,11 @@
               <label><input type="radio" name="statement9" value="5"> Agree a little</label>
               <label><input type="radio" name="statement9" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement9" value="7"> Agree strongly</label>
-            </div>  
-    
-            <h3>Statement 10:</h3>
-            <p>Conventional, uncreative:</p>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Statement 10:</legend>
+            <p style =" font-size:18px">Conventional, uncreative:</p>
             <div id="statement10">
               <label><input type="radio" name="statement10" value="1"> Disagree strongly</label>
               <label><input type="radio" name="statement10" value="2"> Disagree moderately</label>
@@ -226,6 +257,7 @@
               <label><input type="radio" name="statement10" value="6"> Agree moderately</label>
               <label><input type="radio" name="statement10" value="7"> Agree strongly</label>
             </div>
+          </fieldset>
             <br>
             <input type="button" value="Submit Results" id="btnSubmitResults" class="btn btn-rounded" style="font-size:2em;width:100%;" >
             <br>
@@ -321,6 +353,22 @@
       </div>
     </div>
     <div class="col-md-2"></div>
+    
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+            &nbsp;
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+            &nbsp;
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+            &nbsp;
+    </div>
   </div>
 </div>
 
